@@ -35,8 +35,10 @@ class SessionStore:
 	def addSession( self, sessionName ):
 		session = {}
 		session['name'] = sessionName
-		session['id'] = b64encode( str( sha256( sessionName + str( datetime.now() ) ).digest ) )[:5]
-		
+		name = sessionName + str( datetime.now() )
+		print name
+		session['id'] = b64encode( sha256( name ).digest() )[:5].replace( "/", "1" )
+		print session['id']
 		session['users'] = []
 		session['stateDate'] = datetime.now()
 		session['receipt'] = []
@@ -49,6 +51,8 @@ class SessionStore:
 		
 		return session['id']
 		
+	def addFood( self, id, fid ):
+		self.collection.update( { "id": id }, { "$push": { "receipt": fid } } )
 	def get( self, id ):
 		return self.collection.find_one( { "id": id } )
 		

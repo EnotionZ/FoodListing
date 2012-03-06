@@ -60,7 +60,7 @@ class UserStore:
 		user['location'] = loc
 		
 		if self.collection.save( user ) != None:
-			return user['id']
+			return user['uid']
 		else:
 			return None
 	"""

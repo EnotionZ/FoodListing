@@ -6,9 +6,22 @@
 
 import tornado.ioloop
 import tornado.web
+import tornado.httpserver
+import tornado.ioloop
+import tornado.options
+import tornado.web
 from Handlers import *
 from Config import Config
 import re
+import logging
+
+LEVELS = {
+			'debug': logging.DEBUG,
+			'info': logging.INFO,
+			'warning': logging.WARNING,
+			'error': logging.ERROR,
+			'critical': logging.CRITICAL
+		}
 
 class HttpServer:
 	def __init__( self, configFile ):
@@ -16,28 +29,35 @@ class HttpServer:
 		self.address = config['http']['bindaddress']
 		self.port = config['http']['port']
 		self.handlers = []
-		self.application = self.load_handlers( config['http']['handlers'] );
 		
+		console = logging.StreamHandler()
+		formatter = logging.Formatter('%(asctime)s: %(name)s - %(levelname)s - %(message)s')
+		console.setFormatter( formatter )
+		logging.getLogger('').addHandler( console )
+		self.logger = logging.getLogger( "HttpServer" )
+		self.logger.debug( "HttpServer Started" )
 		try:
-			if config['http']['debug'] == True:
-				self.debug = True
-			else:
-				self.debug = False
+			self.logger.setLevel( LEVELS[self.config['logLevel']] )
 		except:
-			self.debug = false
+			self.logger.setLevel( logging.ERROR )
+		
+		self.logger.info( "Loading page handelrs" )
+		self.application = self.load_handlers( config['http']['handlers'] );
 		
 	def load_handlers( self, handlers ):
 		for h in handlers:
 			self.handlers.append( ( h['regex'], eval( h['name'] ) ) )
 	
 	def run( self ):
-		application = tornado.web.Application( self.handlers, debug=self.debug );
-		application.listen( int( self.port ) )
+		self.logger.info( "Creating application" )
+		application = tornado.web.Application( self.handlers );
 		http = tornado.httpserver.HTTPServer( application )
+		self.logger.debug( "Listening on: " + str( self.port ) )
 		http.listen( self.port )
+		self.logger.info( "Starting server" )
 		tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
-	http = HttpServer( "test.json" )
+	http = HttpServer( "config.json" )
 	
 	http.run()

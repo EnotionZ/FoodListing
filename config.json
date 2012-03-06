@@ -11,8 +11,9 @@
 		"port": 8080,
 		"handlers":
 		[
-			{ "name": "DefaultHandler", "regex": "/" }
+			{ "name": "RedirectHandler", "regex": "/" },
+			{ "name": "IndexHandler", "regex": "/(\\w+)" }
 		]
 	},
-	"logLevel": "info"
+	"logLevel": "debug"
 }

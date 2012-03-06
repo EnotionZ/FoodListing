@@ -35,7 +35,7 @@ class FoodStore:
 		food['loc'] = location
 		food['time'] = datetime.now()
 		
-		self.collection.save( food )
+		return self.collection.save( food )
 	
 	def getFoodByName( self, name ):
 		foods = self.collection.find( { "name": name } )
