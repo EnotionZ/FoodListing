@@ -4,13 +4,14 @@
 		
 	by Sean.
 """
-
+from Config import Config
 from pymongo import Connection
 from hashlib import sha256
 from base64 import b64encode
 import logging
+from datetime import datetime
 
-class SesstionStore:
+class SessionStore:
 	def __init__( self, config ):
 		self.config = Config( config )
 		
@@ -25,11 +26,6 @@ class SesstionStore:
 			pass
 			
 		self.collection = "sessions"
-		
-		try:
-			self.collection = self.config['mongo']['collection']
-		except:
-			pass
 			
 		self.con = Connection( self.address, self.port )
 		self.db = self.con[self.database]
@@ -37,8 +33,9 @@ class SesstionStore:
 		self.collection.ensure_index( "id", unique=True )
 		
 	def addSession( self, sessionName ):
+		session = {}
 		session['name'] = sessionName
-		session['id'] = b64encode( sha256( sessionName + str( datetime.now() ) ).digest )[:5]
+		session['id'] = b64encode( str( sha256( sessionName + str( datetime.now() ) ).digest ) )[:5]
 		
 		session['users'] = []
 		session['stateDate'] = datetime.now()
@@ -48,20 +45,15 @@ class SesstionStore:
 		session['tip'] = 0.0
 		session['paymentType'] = []
 		
-		return self.collection.save( session )
+		self.collection.save( session )
+		
+		return session['id']
 		
 	def get( self, id ):
-		return sefl.collection.findOne( { "id": id } )
+		return self.collection.find_one( { "id": id } )
 		
 	def addUser( self, id, userid ):
-		session = self.geT( id )
-		
-		ret = None
-		if session != None:
-			session['users'].append( userid )
-			ret = self.collection.save( session )
-			
-		return ret
+		return self.collection.update( { "id": id }, { "$addToSet": { "users": userid } } )
 		
 	def addReceipt( self, id, receiptId ):
 		session = self.get( id )
@@ -71,7 +63,7 @@ class SesstionStore:
 		if session != None and session['receipt'] == None:
 			session['receipt'] = receiptId
 			self.collection.save( session )
-			
+			ret = session['id']
 		return ret
 		
 	def setTaxRate( self, id, taxrate ):
@@ -84,7 +76,19 @@ class SesstionStore:
 		return self.collection.update( { "id": id }, { "tip": tip } )
 		
 	def addPaymentType( self, id, payment ):
-		return self.collection.update( { "id": id }, { "$push": { "paymentType": payment } )
-		
+		return self.collection.update( { "id": id }, { "$addToSet": { "paymentType": payment } } )
+	
+if __name__ == "__main__":
+	from UserStore import UserStore
+	s = SessionStore( "config.json" )
+	u = UserStore( "config.json" )
+	
+	user = u.getByID( "1234567890" )
+	
+	sess = s.addSession( "test_session" )
+	
+	print sess
+	print s.addUser( sess, user['uid'] )
+	print s.get( sess )
 	
 	

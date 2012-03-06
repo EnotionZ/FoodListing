@@ -12,7 +12,7 @@ import base64
 
 import logging
 
-class UserInfo:
+class UserStore:
 	def __init__( self, config ):
 		self.config = Config( config )
 		
@@ -30,17 +30,12 @@ class UserInfo:
 		
 		self.collection = "users"
 		
-		try:
-			self.collection = self.config['mongo']['user_collection']
-		except:
-			pass
-		
 		self.con = Connection( self.address, self.port )
 		
 		self.db = self.con[self.database]
 		self.collection = self.db[self.collection]
 		
-		self.collection.ensure_index( 'id', unique=True )
+		#self.collection.ensure_index( "id", unique=True )
 		
 	"""
 		PRE: uid = fb, google, other id
@@ -57,25 +52,31 @@ class UserInfo:
 	"""
 	def addUser( self, id, idType, name, age, loc ):
 		user = {}
-		user['id'] = id
+		user['uid'] = id
 		user['idType'] = idType
 		user['food_history'] = []
 		user['name'] = name
 		user['age'] = age
 		user['location'] = loc
 		
-		return self.collection.save( user )
-		
-	def getUserByID( self, id ):
-		user = self.collection.find_one( { "_id": id } )
+		if self.collection.save( user ) != None:
+			return user['id']
+		else:
+			return None
+	"""
+		PRE: id = the users id
+		POST: The RV is the user document or None if it does not exist.
+	"""
+	def getByID( self, id ):
+		user = self.collection.find_one( { "uid": id } )
 		
 		return user
 		
 if __name__ == "__main__":
-	u = UserInfo( "config.json" )
+	u = UserStore( "config.json" )
 	
-	a = u.addUser( "12345678910", "test", 21, ( 73.1, 73.1 ) )
+	a = u.addUser( "12345678910", "facebook", "test", 21, ( 73.1, 73.1 ) )
 	
-	a = u.getUserByID( a )
+	a = u.getByID( a )
 	
 	print a

@@ -16,7 +16,7 @@ Food Items
      Store
      Cost
 
-Session
+Session 	
      Receipt - id to a receipt document
      TaxRate - Tax %
      Tip Amount - Tip %
