@@ -11,6 +11,7 @@ import tornado.ioloop
 import tornado.options
 import tornado.web
 from Handlers import *
+from tornado.web import StaticFileHandler
 from Config import Config
 import re
 import logging
@@ -47,10 +48,14 @@ class HttpServer:
 	def load_handlers( self, handlers ):
 		for h in handlers:
 			self.handlers.append( ( h['regex'], eval( h['name'] ) ) )
+
+		self.handlers.append( ( "/static/(.*)", StaticFileHandler, {
+			"path": "public/"
+			}))
 	
 	def run( self ):
 		self.logger.info( "Creating application" )
-		application = tornado.web.Application( self.handlers );
+		application = tornado.web.Application( self.handlers, debug=True );
 		http = tornado.httpserver.HTTPServer( application )
 		self.logger.debug( "Listening on: " + str( self.port ) )
 		http.listen( self.port )
