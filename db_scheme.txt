@@ -1,0 +1,31 @@
+Database - propagate a shitton of data
+
+Users
+	 ID - social networking id
+	 IDType - social networking type
+	 Zip - Zipcode for the user
+     Name
+     Age
+     Location - 2tuple of lat/lng
+     Food Items - array of food items.
+	 
+Food Items
+     date purchased
+     Item Name
+     SKU
+     Store
+     Cost
+
+Session
+     Receipt - id to a receipt document
+     TaxRate - Tax %
+     Tip Amount - Tip %
+     Payment Types - Array of payment types.
+
+Receipt
+     Food Item
+
+Store
+     location
+     store number
+     phone number
