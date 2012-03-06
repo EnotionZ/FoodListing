@@ -6,7 +6,13 @@
 	},
 	"http":
 	{
-		"port": 8080
+		"debug": true,
+		"bindaddress": "127.0.0.1",
+		"port": 8080,
+		"handlers":
+		[
+			{ "name": "DefaultHandler", "regex": "/" }
+		]
 	},
 	"logLevel": "info"
 }
