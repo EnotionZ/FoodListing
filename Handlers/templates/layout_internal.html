@@ -14,7 +14,7 @@
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span> 
 					</a>
-					<a class="brand" href="./index.html">YourtabLE</a>
+					<a class="brand" href="./index.html">YourTable</a>
 					<div class="nav-collapse"> 
 						<ul class="nav"> 
 							<li>
@@ -52,16 +52,22 @@
 				</div>
 			</div> 
 		</div> 
-		<section id="content" class="container">
-			<div class="page-header">
-				<h1>{{ page_title }}</h1>
-				<small>{{ page_subtitle }}</small>
-			</div>
-			<div class="row">
-				<div class="span12">
-					{% block content %} Default {% end %}
+		<div class="container">
+			<section id="content">
+				<div class="page-header">
+					<h1>{{ page_title }}</h1>
+					<small>{{ page_subtitle }}</small>
 				</div>
-			</div>
-		</section>
+				<div class="row">
+					<div class="span12">
+						{% block content %} Default {% end %}
+					</div>
+				</div>
+			</section>
+			<footer class="footer">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p>Copyright &copy; 2012 YourTable.com | <a>Terms of Service</a></p>
+			</footer>
+		</div>
 	</body>
 </html>
