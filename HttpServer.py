@@ -56,18 +56,6 @@ class HttpServer:
 			self.logger.setLevel( logging.ERROR )
 		
 		self.logger.info( "Loading page handelrs" )
-		# self.application = self.load_handlers( config['http']['handlers'] );
-		
-	# def load_handlers( self, handlers ):
-		# for h in handlers:
-			# if "ops" in h:
-				# self.handlers.append( ( h['regex'], eval( h['name'] ), eval( h['ops'] ) ) )
-			# else:
-				# self.handlers.append( ( h['regex'], eval( h['name'] ) ) )
-
-		# self.handlers.append( ( "/static/(.*)", StaticFileHandler, {
-			# "path": "public/"
-			# }))
 	
 	def run( self ):
 		settings = {
@@ -82,8 +70,9 @@ class HttpServer:
 			( r"/login", LoginHandler, dict( users = self.users, ) ),
 			( r"/dashboard(/\w*)?", DashboardHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, ) ),
 			( r"/home(/?\w*)", PublicHandler ),
-			( "/static/(.*)", StaticFileHandler, { "path": "public/" }),
-			( "/m/(.*)", StaticFileHandler, { "path": "mobile/" })
+			( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),
+			( r"/rest/(\w+)/([\w\d]+)/([\w\d]+)", RestHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, food = self.foods, ) ),
+			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" })
 		], **settings )
 		http = tornado.httpserver.HTTPServer( application )
 		self.logger.debug( "Listening on: " + str( self.port ) )

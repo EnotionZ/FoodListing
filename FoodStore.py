@@ -94,6 +94,17 @@ class FoodStore:
 		ret = []
 		
 		for f in foods:
+			print f['_id']
+			ret.append( f['_id'] )
+			
+		return ret
+		
+	def getFoodByRestaurant( self, rid ):
+		foods = self.collection.find( { "restaurant": rid } )
+		
+		ret = []
+		
+		for f in foods:
 			ret.append( f )
 			
 		return ret

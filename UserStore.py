@@ -82,10 +82,14 @@ class UserStore:
 		p = b64encode( sha256( password ).digest() )
 		return self.collection.find_one( { "name": username, "pass": p } )
 		
+	def addFood( self, id, fid ):
+		food = { "fid": fid, "date": datetime.now() }
+		return self.collection.update( { "uid": id }, { "$push": { "food_history": food } } )
+		
 if __name__ == "__main__":
 	u = UserStore( "config.json" )
 	
-	a = u.addUser( "123456789", "facebook", "Sean", "password", 21, 20151, ( 73.1, 73.1 ) )
+	a = u.addUser( "12345543215", "facebook", "Megan", "password", 21, 20151, ( 73.1, 73.1 ) )
 	
 	a = u.getByID( a )
 	

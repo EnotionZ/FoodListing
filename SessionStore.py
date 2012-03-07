@@ -32,7 +32,7 @@ class SessionStore:
 		self.collection = self.db[self.collection]
 		self.collection.ensure_index( "id", unique=True )
 		
-	def addSession( self, sessionName, restaurantName ):
+	def addSession( self, sessionName, restaurantId ):
 		session = {}
 		session['name'] = sessionName						#Restaurant Name
 		name = sessionName + str( datetime.now() )			
@@ -43,8 +43,8 @@ class SessionStore:
 		session['tax'] = 0.0								#Tax percent
 		session['total'] = 0.0								#Total cost
 		session['tip'] = 0.0								#Tip percent.
-		session['paymentType'] = []							#What methods were used to pay.
-		
+		session['paymentType'] = []		#What methods were used to pay.
+		session['restaurantId'] = restaurantId
 		self.collection.save( session )
 		
 		return session['id']
