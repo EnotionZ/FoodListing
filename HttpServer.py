@@ -82,7 +82,8 @@ class HttpServer:
 			( r"/login", LoginHandler, dict( users = self.users, ) ),
 			( r"/dashboard(/\w*)?", DashboardHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, ) ),
 			( r"/home(/?\w*)", PublicHandler ),
-			( "/static/(.*)", StaticFileHandler, { "path": "public/" })
+			( "/static/(.*)", StaticFileHandler, { "path": "public/" }),
+			( "/m/(.*)", StaticFileHandler, { "path": "mobile/" })
 		], **settings )
 		http = tornado.httpserver.HTTPServer( application )
 		self.logger.debug( "Listening on: " + str( self.port ) )
