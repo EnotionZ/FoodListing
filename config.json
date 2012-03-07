@@ -18,5 +18,11 @@
 			{ "name": "PublicHandler", "regex": "/" }
 		]
 	},
+	"sms":
+	{
+		"account": "ACa23a4631f480400ab4bb097413e1385e",
+		"token": "f534e790f21f96f11087a50df5fc92ea",
+		"fromNum": "+14155992671"
+	},
 	"logLevel": "debug"
 }

@@ -21,6 +21,7 @@ from pymongo import Connection
 from UserStore import UserStore
 from SessionStore import SessionStore
 from RestaurantStore import RestaurantStore
+from FoodStore import FoodStore
 
 LEVELS = {
 			'debug': logging.DEBUG,
@@ -33,6 +34,7 @@ LEVELS = {
 class HttpServer:
 	def __init__( self, configFile ):
 		config = Config( configFile )
+		self.configFile = configFile
 		self.address = config['http']['bindaddress']
 		self.port = config['http']['port']
 		self.handlers = []
@@ -42,6 +44,7 @@ class HttpServer:
 		self.users = UserStore( configFile )
 		self.sessions = SessionStore( configFile )
 		self.restaurants = RestaurantStore( configFile )
+		self.foods = FoodStore( configFile )
 		
 		console = logging.StreamHandler()
 		formatter = logging.Formatter('%(asctime)s: %(name)s - %(levelname)s - %(message)s')
@@ -72,7 +75,8 @@ class HttpServer:
 			( r"/home(/?\w*)", PublicHandler ),
 			( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),
 			( r"/rest/(\w+)/([\w\d]+)/([\w\d]+)", RestHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, food = self.foods, ) ),
-			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" })
+			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" } ),
+			( r"/sms", SMSHandler, dict( config = self.configFile, ) )
 		], **settings )
 		http = tornado.httpserver.HTTPServer( application )
 		self.logger.debug( "Listening on: " + str( self.port ) )
