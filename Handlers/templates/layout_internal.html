@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Test</title> 
+		<title>YourtablE - {{ page_title }}</title> 
 		<link href="static/bootstrap/css/bootstrap.css" rel="stylesheet"> 
 		<link href="static/css/app_internal.css" rel="stylesheet"> 
 	</head>
@@ -17,10 +17,36 @@
 					<a class="brand" href="./index.html">YourtabLE</a>
 					<div class="nav-collapse"> 
 						<ul class="nav"> 
-							<li class=""> <a href="./index.html">Dashboard</a> </li>
-							<li class=""> <a href="./index.html">Dining History</a> </li>
-							<li class=""> <a href="./index.html">Recommendations</a> </li>
-							<li class=""> <a href="./settings.html">Settings</a> </li>
+							<li>
+								<a href="/dashboard">
+									<i class="icon-home icon-white"></i>
+									Dashboard
+								</a>
+							</li>
+							<li>
+								<a href="/history">
+									<i class="icon-bookmark icon-white"></i>
+									Dining History
+								</a>
+							</li>
+							<li>
+								<a href="/recommendations">
+									<i class="icon-map-marker icon-white"></i>
+									Recommendations
+								</a>
+							</li>
+							<li>
+								<a href="/settings">
+									<i class="icon-cog icon-white"></i>
+									Settings
+								</a>
+							</li>
+							<li>
+								<a href="/logout">
+									<i class="icon-off icon-white"></i>
+									Logout
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

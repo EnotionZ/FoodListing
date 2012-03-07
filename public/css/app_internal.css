@@ -4,3 +4,6 @@ body {
 #content {
   margin-top: 62px;
 }
+.navbar .nav {
+  float: right;
+}
