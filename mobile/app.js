@@ -15,7 +15,7 @@ Ext.application({
 		'Ext.form.Panel'
 	],
 
-	views: ['Main'],
+	views: ['Main', 'Session', 'Receipt'],
 
 	icon: {
 		57: 'resources/icons/Icon.png',

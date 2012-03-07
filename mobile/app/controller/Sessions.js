@@ -5,6 +5,7 @@ Ext.define('YourTable.controller.Sessions', {
 		refs: {
 			takePictureBtn: '#takePicture',
 			enterReceiptBtn: '#enterReceipt',
+			receiptTab: "#addReceiptTab",
 			loginForm: 'formpanel'
 		},
 		control: {
@@ -20,6 +21,7 @@ Ext.define('YourTable.controller.Sessions', {
 	doTakePicture: function() {
 		Ext.device.Camera.capture({
 			success: function(image) {
+				alert("fsdfsdfds");
 				//imageView.setSrc(image);
 			},
 			quality: 75,
@@ -30,7 +32,10 @@ Ext.define('YourTable.controller.Sessions', {
 	},
 
 	doEnterReceipt: function() {
-		alert("enter receipt");
+		if(!this.ReceiptView) this.ReceiptView = Ext.create("YourTable.view.Receipt");
+		debugger;
+		this.getReceiptTab().removeAll();
+		this.getReceiptTab().add(this.ReceiptView);
 	},
 
 	doLogin: function() {
