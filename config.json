@@ -2,7 +2,8 @@
 	"mongo":
 	{
 		"address": "127.0.0.1",
-		"port": 27017
+		"port": 27017,
+		"database": "foodlisting"
 	},
 	"http":
 	{
@@ -12,7 +13,9 @@
 		"handlers":
 		[
 			{ "name": "RedirectHandler", "regex": "/" },
-			{ "name": "IndexHandler", "regex": "/(\\w+)" }
+			{ "name": "LoginHandler", "regex": "/login" },
+			{ "name": "DashboardHandler", "regex": "/dashboard(/\\w+)?", "ops": "dict(db=self.db)" },
+			{ "name": "PublicHandler", "regex": "/" }
 		]
 	},
 	"logLevel": "debug"

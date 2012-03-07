@@ -27,13 +27,14 @@ class FoodStore:
 		self.db = self.con[self.database]
 		self.collection = self.db[self.collection]
 		
-	def addFood( self, userid, name, sessionid, location ):
+	def addFood( self, userid, name, cost, sessionid, restaurantId = None ):
 		food = {}
-		food['user'] = userid
-		food['name'] = name
-		food['session'] = sessionid
-		food['loc'] = location
-		food['time'] = datetime.now()
+		food['user'] 		= userid			#Who bought this?
+		food['name'] 		= name				#Name of the food ie: pizza
+		food['session'] 	= sessionid			#What session was this bought in?
+		food['cost'] 		= cost				#What did it cost?
+		food['date'] 		= datetime.now()	#When was thus food bought?
+		food['restaurant'] 	= restaurantId		#What restaurant? Can be None
 		
 		return self.collection.save( food )
 	
@@ -100,8 +101,6 @@ class FoodStore:
 if __name__ == "__main__":
 	f = FoodStore( "config.json" )
 	
-	#f.addFood( "1234567890", "pizza", "PGJ1a", ( 73.1, 73.1 ) )
-	#f.addFood( "1234567890", "coke", "PGJ1a", ( 73.1, 73.1 ) )
 	
 	print "Get food By name"
 	print f.getFoodByName( "pizza" )

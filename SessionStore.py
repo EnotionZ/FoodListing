@@ -32,20 +32,18 @@ class SessionStore:
 		self.collection = self.db[self.collection]
 		self.collection.ensure_index( "id", unique=True )
 		
-	def addSession( self, sessionName ):
+	def addSession( self, sessionName, restaurantName ):
 		session = {}
-		session['name'] = sessionName
-		name = sessionName + str( datetime.now() )
-		print name
-		session['id'] = b64encode( sha256( name ).digest() )[:5].replace( "/", "1" )
-		print session['id']
-		session['users'] = []
-		session['stateDate'] = datetime.now()
-		session['receipt'] = []
-		session['tax'] = 0.0
-		session['total'] = 0.0
-		session['tip'] = 0.0
-		session['paymentType'] = []
+		session['name'] = sessionName						#Restaurant Name
+		name = sessionName + str( datetime.now() )			
+		session['id'] = b64encode( sha256( name ).digest() )[:5].replace( "/", "1" )			#restaunrant name and date
+		session['users'] = []								#Array of current users in session.
+		session['stateDate'] = datetime.now()				#when did this session start.
+		session['receipt'] = []								#Array of food items
+		session['tax'] = 0.0								#Tax percent
+		session['total'] = 0.0								#Total cost
+		session['tip'] = 0.0								#Tip percent.
+		session['paymentType'] = []							#What methods were used to pay.
 		
 		self.collection.save( session )
 		
@@ -81,6 +79,31 @@ class SessionStore:
 		
 	def addPaymentType( self, id, payment ):
 		return self.collection.update( { "id": id }, { "$addToSet": { "paymentType": payment } } )
+		
+	def getById( self, id ):
+		return self.collection.find_one( { "id": id } )
+		
+	#This is based on the number of sessions at the restaurant not people
+	def getNumberOfVisitsRestaurant( self, id ):
+		return self.db.sessions.find( { "restaurant": id } ).count()
+	
+	#how much food was ordered here?
+	def getFoodCountsRestaurant( self, id ):
+		sessions = self.collection.find( { "restaunrant": id } )
+		
+		food = {}
+		
+		for s in sessions:
+			for f in s['receipt']:
+				a = self.db.food.find_one( { "id": f['id'] } )
+				
+				if a['name'] in food:
+					food[a['name']]['count'] += 1
+				else:
+					food[a['name']]['count'] = 1
+					food[a['name']]['food'] = a
+
+		return food
 	
 if __name__ == "__main__":
 	from UserStore import UserStore

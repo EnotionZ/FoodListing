@@ -8,7 +8,8 @@ from Config import Config
 from pymongo import Connection
 from datetime import datetime
 import time
-import base64
+from hashlib import sha256
+from base64 import b64encode
 
 import logging
 
@@ -50,14 +51,16 @@ class UserStore:
 			and the object is returned from the function to be used
 			else where.
 	"""
-	def addUser( self, id, idType, name, age, loc ):
+	def addUser( self, id, idType, name, password, age, zip, loc ):
 		user = {}
-		user['uid'] = id
-		user['idType'] = idType
-		user['food_history'] = []
-		user['name'] = name
-		user['age'] = age
-		user['location'] = loc
+		user['uid'] 			= id	#user id
+		user['idType'] 			= idType#id type, facebook, google, ect...
+		user['food_history'] 	= []	#all food ordered by this person
+		user['name'] 			= name	#name of the user
+		user['pass']			= b64encode( sha256( password ).digest() )
+		user['age'] 			= age	#age of the person
+		user['location'] 		= loc	#location
+		user['zip']				= zip	#zip code
 		
 		if self.collection.save( user ) != None:
 			return user['uid']
@@ -69,13 +72,20 @@ class UserStore:
 	"""
 	def getByID( self, id ):
 		user = self.collection.find_one( { "uid": id } )
-		
 		return user
+		
+	"""
+		PRE: username and password are defined.
+		POST: The RV is not none if the user and password combination work.
+	"""
+	def checkUser( self, username, password ):
+		p = b64encode( sha256( password ).digest() )
+		return self.collection.find_one( { "name": username, "pass": p } )
 		
 if __name__ == "__main__":
 	u = UserStore( "config.json" )
 	
-	a = u.addUser( "12345678910", "facebook", "test", 21, ( 73.1, 73.1 ) )
+	a = u.addUser( "123456789", "facebook", "Sean", "password", 21, 20151, ( 73.1, 73.1 ) )
 	
 	a = u.getByID( a )
 	
