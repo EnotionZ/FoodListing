@@ -4,6 +4,15 @@ body {
 #content {
   margin-top: 62px;
 }
+.brand span.brand_tag {
+  color: #bbb;
+}
+.brand:hover span {
+  visibility: hidden;
+}
+.brand:hover span.brand_tag {
+  visibility: visible;
+}
 .navbar .nav {
   float: right;
 }
