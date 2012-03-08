@@ -5,6 +5,10 @@
 		<link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet"> 
 		{% block header_include %} {% end %}
 		{% block header %} {% end %}
+		<script type="text/javascript">// <![CDATA[  
+			var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));  
+			if (mobile) document.location = "/m/index.html";  
+		// ]]></script>  
 	</head>
 	<body> 
 		<div class="navbar navbar-fixed-top"> 
