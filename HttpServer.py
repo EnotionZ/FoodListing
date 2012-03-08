@@ -77,7 +77,7 @@ class HttpServer:
 			( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),
 			( r"/rest/(\w+)/([\w\d]+)/([\w\d]+)", RestHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, food = self.foods, ) ),
 			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" } ),
-			( r"/sms", SMSHandler, dict( config = self.configFile, ) )
+			( r"/sms", SMSHandler, dict( config = self.configFile, sessions = self.sessions, foods = self.foods ) )
 			#( r"/shorten", ShortenHandler, dict( config = self.configFile ) )
 		], **settings )
 		http = tornado.httpserver.HTTPServer( application )
