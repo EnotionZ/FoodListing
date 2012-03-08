@@ -1,6 +1,7 @@
 Ext.define("YourTable.view.Receipt", {
 	extend: "Ext.Panel",
 	xtype: "receiptPanel",
+	id: "foodItemListing",
 	config: {
 		styleHtmlContent: true,
 		items: [
@@ -8,8 +9,18 @@ Ext.define("YourTable.view.Receipt", {
 				docked: 'top',
 				xtype: 'toolbar',
 				items: [
-					{ ui: 'back', text: 'Back' },
-					{ id: 'showAddCard', ui: 'round', text: 'Add Entry' }
+					{
+						xtype: 'button',
+						ui: 'back',
+						text: 'Back'
+					},
+                    {   xtype: 'spacer'   },
+					{
+						id: 'showAddCard',
+						xtype: 'button',
+						iconCls: 'add',
+						iconMask: true
+					}
 				]
 			}
 		],

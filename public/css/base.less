@@ -3,6 +3,23 @@
 	-webkit-box-shadow: @val; 
 	box-shadow: @val;   
 }
+
+.border-radius(@radius) {
+  -moz-border-radius: @radius; 
+ -webkit-border-radius: @radius; 
+         border-radius: @radius;
+}
+
+.gradient-background(@start, @stop) {
+  background-color: @start;
+  background-image: -moz-linear-gradient(top, @start, @stop); 
+  background-image: -o-linear-gradient(top, @start, @stop); 
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, @start),color-stop(1, @stop)); 
+  background-image: -webkit-linear-gradient(@start, @stop); 
+  background-image: linear-gradient(top, @start, @stop);
+  /*filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorStr='@{start}', EndColorStr='@{stop}')";*/
+}
+
 body {
 	background-color: #ccc;
 }

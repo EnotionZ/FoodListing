@@ -1,3 +1,15 @@
+Ext.define('YourTable.model.FoodItem', {
+	extend: 'Ext.data.Model',
+
+	config: {
+		fields: [
+			{ name: 'name',     type: 'string' },
+			{ name: 'quantity', type: 'integer' },
+			{ name: 'cost',    type: 'integer' }
+		]
+	}
+});
+
 Ext.define('YourTable.controller.Sessions', {
 	extend: 'Ext.app.Controller',
 
@@ -6,7 +18,7 @@ Ext.define('YourTable.controller.Sessions', {
 			takePictureBtn: '#takePicture',
 			enterReceiptBtn: '#enterReceipt',
 			tab: "#addReceiptTab",
-			loginForm: 'formpanel'
+			listing: "#foodItemListing"
 		},
 		control: {
 			'#takePicture': { tap: 'doTakePicture' },
@@ -14,19 +26,6 @@ Ext.define('YourTable.controller.Sessions', {
 			'#showAddCard': { tap: 'showAddCard' },
 			'#addFoodEntry': { tap: 'addFoodEntry' }
 		}
-	},
-
-	addFoodEntry: function() {
-		alert("adding food entry");
-		this.getTab().setActiveItem(this.ReceiptView);
-	},
-
-	showAddCard: function() {
-		if(!this.AddCard) {
-			this.AddCard = Ext.create("YourTable.view.AddCard");
-			this.getTab().add(this.AddCard);
-		}
-		this.getTab().setActiveItem(this.AddCard);
 	},
 
 	doTakePicture: function() {
@@ -41,18 +40,26 @@ Ext.define('YourTable.controller.Sessions', {
 		});
 	},
 
+	addFoodEntry: function() {
+		this.getTab().setActiveItem(this.ReceiptView);
+		//this.ReceiptView.add(Ext.create('YourTable.view.ReceiptItem'));
+		this.ReceiptView.add({html: "new item"});
+	},
+
+	showAddCard: function() {
+		if(!this.AddCard) {
+			this.AddCard = Ext.create("YourTable.view.AddCard");
+			this.getTab().add(this.AddCard);
+		}
+		this.getTab().setActiveItem(this.AddCard);
+	},
+
 	doEnterReceipt: function() {
 		if(!this.ReceiptView) {
 			this.ReceiptView = Ext.create("YourTable.view.Receipt");
 			this.getTab().add(this.ReceiptView);
 		}
 		this.getTab().setActiveItem(this.ReceiptView);
-	},
-
-	doLogin: function() {
-		var form   = this.getLoginForm(),
-		values = form.getValues();
-
-		MyApp.authenticate(values);
 	}
+
 });

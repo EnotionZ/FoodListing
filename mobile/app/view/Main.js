@@ -22,10 +22,10 @@ Ext.define("YourTable.view.Main", {
 							},
 							{
 								xtype: 'button',
-								text: 'Take a Picture',
+								text: 'Upload a Picture',
 								id: 'takePicture',
 								ui: 'action',
-								iconCls: 'star',
+								iconCls: 'action',
 								iconMask: true,
 								padding: 10,
 								margin: 10
@@ -35,7 +35,7 @@ Ext.define("YourTable.view.Main", {
 								text: 'Enter Receipt Info',
 								id: 'enterReceipt',
 								ui: 'action',
-								iconCls: 'add',
+								iconCls: 'compose',
 								iconMask: true,
 								padding: 10,
 								margin: 10,

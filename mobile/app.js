@@ -12,10 +12,12 @@ Ext.application({
 	requires: [
 		'Ext.MessageBox',
 		'Ext.device.Camera',
-		'Ext.form.Panel'
+		'Ext.form.Panel',
+		'Ext.form.FieldSet',
+		'Ext.form.Spinner'
 	],
 
-	views: ['Main', 'Session', 'Receipt'],
+	views: ['Main', 'Session', 'Receipt', 'ReceiptItem', 'AddCard'],
 
 	icon: {
 		57: 'resources/icons/Icon.png',

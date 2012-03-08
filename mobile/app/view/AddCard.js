@@ -1,5 +1,7 @@
 Ext.define("YourTable.view.AddCard", {
 	extend: "Ext.Panel",
+	xtype: "addCardForm",
+	id: "addCardForm",
 	config: {
 		styleHtmlContent: true,
 		items: [
