@@ -1,11 +1,16 @@
 {% extends "layout_external.html" %}
+{% block page_title %} Login{% end %}
 {% block content %}
-<fieldset>
-	<legend>Login</legend>
-	<form method='post' action='./login{{ next }}'>
-		<label>Username:<input type='text' name='username'></label><br />
-		<label>Password:<input type='password' name='password'></label><br />
-		<input type='submit' value='Submit'><br />
-	</form>
-</field>
+<form method='post' action='./login{{ next }}' class="well">
+
+	<label>Username:
+		<input type='text' name='username'>
+	</label>
+
+	<label>Password:
+		<input type='password' name='password'>
+	</label>
+
+	<input type='submit' value='Submit' class="btn">
+</form>
 {% end %}
