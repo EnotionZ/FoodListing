@@ -5,23 +5,33 @@ Ext.define('YourTable.controller.Sessions', {
 		refs: {
 			takePictureBtn: '#takePicture',
 			enterReceiptBtn: '#enterReceipt',
-			receiptTab: "#addReceiptTab",
+			tab: "#addReceiptTab",
 			loginForm: 'formpanel'
 		},
 		control: {
-			'#takePicture': {
-				tap: 'doTakePicture'
-			},
-			'#enterReceipt': {
-				tap: 'doEnterReceipt'
-			}
+			'#takePicture': { tap: 'doTakePicture' },
+			'#enterReceipt': { tap: 'doEnterReceipt' },
+			'#showAddCard': { tap: 'showAddCard' },
+			'#addFoodEntry': { tap: 'addFoodEntry' }
 		}
+	},
+
+	addFoodEntry: function() {
+		alert("adding food entry");
+		this.getTab().setActiveItem(this.ReceiptView);
+	},
+
+	showAddCard: function() {
+		if(!this.AddCard) {
+			this.AddCard = Ext.create("YourTable.view.AddCard");
+			this.getTab().add(this.AddCard);
+		}
+		this.getTab().setActiveItem(this.AddCard);
 	},
 
 	doTakePicture: function() {
 		Ext.device.Camera.capture({
 			success: function(image) {
-				alert("fsdfsdfds");
 				//imageView.setSrc(image);
 			},
 			quality: 75,
@@ -32,10 +42,11 @@ Ext.define('YourTable.controller.Sessions', {
 	},
 
 	doEnterReceipt: function() {
-		if(!this.ReceiptView) this.ReceiptView = Ext.create("YourTable.view.Receipt");
-		debugger;
-		this.getReceiptTab().removeAll();
-		this.getReceiptTab().add(this.ReceiptView);
+		if(!this.ReceiptView) {
+			this.ReceiptView = Ext.create("YourTable.view.Receipt");
+			this.getTab().add(this.ReceiptView);
+		}
+		this.getTab().setActiveItem(this.ReceiptView);
 	},
 
 	doLogin: function() {

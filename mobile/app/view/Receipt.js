@@ -6,13 +6,13 @@ Ext.define("YourTable.view.Receipt", {
 		items: [
 			{
 				docked: 'top',
-				xtype: 'titlebar',
-				title: 'Enter Receipt Info'
+				xtype: 'toolbar',
+				items: [
+					{ ui: 'back', text: 'Back' },
+					{ id: 'showAddCard', ui: 'round', text: 'Add Entry' }
+				]
 			}
 		],
-		initialize: function() {
-			this.callParent(arguments);
-		},
 		fullscreen: true
 	}
 });
