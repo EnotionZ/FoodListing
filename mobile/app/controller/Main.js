@@ -1,115 +1,115 @@
 Ext.define('YourTable.controller.Main', {
-    extend: 'Ext.app.Controller',
+	extend: 'Ext.app.Controller',
 
-    config: {
-        /**
-         * @private
-         */
-        viewCache: [],
+	config: {
+		/**
+		 * @private
+		 */
+		viewCache: [],
 
-        refs: {
-        },
+		refs: {
+		},
 
-        routes: {
-            'demo/:id': 'showViewById',
-            'menu/:id': 'showMenuById'
-        },
+		routes: {
+			'demo/:id': 'showViewById',
+			'menu/:id': 'showMenuById'
+		},
 
-        /**
-         * @cfg {Ext.data.Model} currentDemo The Demo that is currently loaded. This is set whenever showViewById
-         * is called and used by functions like onSourceTap to fetch the source code for the current demo.
-         */
-        currentDemo: undefined
-    },
+		/**
+		 * @cfg {Ext.data.Model} currentDemo The Demo that is currently loaded. This is set whenever showViewById
+		 * is called and used by functions like onSourceTap to fetch the source code for the current demo.
+		 */
+		currentDemo: undefined
+	},
 
-    /**
-     * Finds a given view by ID and shows it. End-point of the "demo/:id" route
-     */
-    showViewById: function(id) {
-        var nav = this.getNav(),
-            view = nav.getStore().getNodeById(id);
+	/**
+	 * Finds a given view by ID and shows it. End-point of the "demo/:id" route
+	 */
+	showViewById: function(id) {
+		var nav = this.getNav(),
+		view = nav.getStore().getNodeById(id);
 
-        this.showView(view);
-        this.setCurrentDemo(view);
-        this.hideSheets();
-    },
+		this.showView(view);
+		this.setCurrentDemo(view);
+		this.hideSheets();
+	},
 
 
-    /**
-     * @private
-     * In the kitchen sink we have a large number of dynamic views. If we were to keep all of them rendered
-     * we'd risk causing the browser to run out of memory, especially on older devices. If we destroy them as
-     * soon as we're done with them, the app can appear sluggish. Instead, we keep a small number of rendered
-     * views in a viewCache so that we can easily reuse recently used views while destroying those we haven't
-     * used in a while.
-     * @param {String} name The full class name of the view to create (e.g. "Kitchensink.view.Forms")
-     * @return {Ext.Component} The component, which may be from the cache
-     */
-    createView: function(name) {
-        var cache = this.getViewCache(),
-            ln = cache.length,
-            limit = 20,
-            view, i, oldView;
+	/**
+	 * @private
+	 * In the kitchen sink we have a large number of dynamic views. If we were to keep all of them rendered
+	 * we'd risk causing the browser to run out of memory, especially on older devices. If we destroy them as
+	 * soon as we're done with them, the app can appear sluggish. Instead, we keep a small number of rendered
+	 * views in a viewCache so that we can easily reuse recently used views while destroying those we haven't
+	 * used in a while.
+	 * @param {String} name The full class name of the view to create (e.g. "Kitchensink.view.Forms")
+	 * @return {Ext.Component} The component, which may be from the cache
+	 */
+	createView: function(name) {
+		var cache = this.getViewCache(),
+		ln = cache.length,
+		limit = 20,
+		view, i, oldView;
 
-        Ext.each(cache, function(item) {
-            if (item.viewName === name) {
-                view = item;
-                return;
-            }
-        }, this);
+		Ext.each(cache, function(item) {
+				if (item.viewName === name) {
+					view = item;
+					return;
+				}
+			}, this);
 
-        if (view) {
-            return view;
-        }
+		if (view) {
+			return view;
+		}
 
-        if (ln >= limit) {
-            for (i = 0; i < ln; i++) {
-                oldView = cache[i];
-                if (!oldView.isPainted()) {
-                    oldView.destroy();
-                    cache.splice(i, 1);
-                    break;
-                }
-            }
-        }
+		if (ln >= limit) {
+			for (i = 0; i < ln; i++) {
+				oldView = cache[i];
+				if (!oldView.isPainted()) {
+					oldView.destroy();
+					cache.splice(i, 1);
+					break;
+				}
+			}
+		}
 
-        view = Ext.create(name);
-        view.viewName = name;
-        cache.push(view);
-        this.setViewCache(cache);
+		view = Ext.create(name);
+		view.viewName = name;
+		cache.push(view);
+		this.setViewCache(cache);
 
-        return view;
-    },
+		return view;
+	},
 
-    /**
-     * @private
-     * Returns the full class name of the view to construct for a given Demo
-     * @param {Kitchensink.model.Demo} item The demo
-     * @return {String} The full class name of the view
-     */
-    getViewName: function(item) {
-        var name = item.get('view') || item.get('text'),
-            ns   = 'Kitchensink.view.';
+	/**
+	 * @private
+	 * Returns the full class name of the view to construct for a given Demo
+	 * @param {Kitchensink.model.Demo} item The demo
+	 * @return {String} The full class name of the view
+	 */
+	getViewName: function(item) {
+		var name = item.get('view') || item.get('text'),
+		ns   = 'Kitchensink.view.';
 
-        if (name == 'TouchEvents') {
-            if (this.getApplication().getCurrentProfile().getName() === 'Tablet') {
-                return ns + 'tablet.' + name;
-            } else {
-                return ns + 'phone.' + name;
-            }
-        } else {
-            return ns + name;
-        }
-    },
-    
-    /**
-     * we iterate over all of the floating sheet components and make sure they're hidden when we
-     * navigate to a new view. This stops things like Picker overlays staying visible when you hit
-     * the browser's back button
-     */
-    hideSheets: function() {
-        Ext.each(Ext.ComponentQuery.query('sheet'), function(sheet) {
-            sheet.setHidden(true);
-        });
-    }
+		if (name == 'TouchEvents') {
+			if (this.getApplication().getCurrentProfile().getName() === 'Tablet') {
+				return ns + 'tablet.' + name;
+			} else {
+				return ns + 'phone.' + name;
+			}
+		} else {
+			return ns + name;
+		}
+	},
+
+	/**
+	 * we iterate over all of the floating sheet components and make sure they're hidden when we
+	 * navigate to a new view. This stops things like Picker overlays staying visible when you hit
+	 * the browser's back button
+	 */
+	hideSheets: function() {
+		Ext.each(Ext.ComponentQuery.query('sheet'), function(sheet) {
+				sheet.setHidden(true);
+			});
+	}
 });

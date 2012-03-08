@@ -4,39 +4,44 @@ Ext.define("YourTable.view.Main", {
 
 	config: {
 		tabBarPosition: 'bottom',
-
 		items: [
 			{
 				title: 'Add Receipt',
+				id: 'addReceiptTab',
 				iconCls: 'compose',
-
-				styleHtmlContent: true,
-				scrollable: true,
+				layout: 'card',
 				items: [
 					{
-						docked: 'top',
-						xtype: 'titlebar',
-						title: 'Record your Receipt'
-					},
-					{
-						xtype: 'button',
-						text: 'Take a Picture',
-						id: 'takePicture',
-						ui: 'action',
-						iconCls: 'star',
-						iconMask: true,
-						padding: 10,
-						margin: 10
-					},
-					{
-						xtype: 'button',
-						text: 'Enter Receipt Info',
-						id: 'enterReceipt',
-						ui: 'action',
-						iconCls: 'add',
-						iconMask: true,
-						padding: 10,
-						margin: 10
+						scrollable: true,
+						styleHtmlContent: true,
+						items: [
+							{
+								docked: 'top',
+								xtype: 'titlebar',
+								title: 'Record your Receipt'
+							},
+							{
+								xtype: 'button',
+								text: 'Take a Picture',
+								id: 'takePicture',
+								ui: 'action',
+								iconCls: 'star',
+								iconMask: true,
+								padding: 10,
+								margin: 10
+							},
+							{
+								xtype: 'button',
+								text: 'Enter Receipt Info',
+								id: 'enterReceipt',
+								ui: 'action',
+								iconCls: 'add',
+								iconMask: true,
+								padding: 10,
+								margin: 10,
+								items: [{ xtype: "receiptPanel" }]
+							}
+						]
 					}
 				]
 			},
