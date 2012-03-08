@@ -10,11 +10,9 @@ class PublicHandler( tornado.web.RequestHandler ):
 
 	def get( self, action ):
 		print action
-		if action in [ "/", "/home", "" ]:
-			self.render( "templates/index.html", 
-					page_title="Dashboard",
-					page_subtitle="subtitle for dashboard")
+		if action in [ "/", "/public", "" ]:
+			self.render( "templates/index.html")
 		elif action == "/about":
-			self.render( "templates/about.html" )
-		elif action == "/contact":
-			self.render( "templates/contact.html" )
+			self.render( "templates/about.html")
+		elif action == "/team":
+			self.render( "templates/team.html" )

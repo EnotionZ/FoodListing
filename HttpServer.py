@@ -73,7 +73,7 @@ class HttpServer:
 			( r"/login", LoginHandler, dict( users = self.users, ) ),
 			( r"/logout", LogoutHandler ),
 			( r"/dashboard(/\w*)?", DashboardHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, ) ),
-			( r"/home(/?\w*)", PublicHandler ),
+			( r"/public(/?\w*)", PublicHandler ),
 			( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),
 			( r"/rest/(\w+)/([\w\d]+)/([\w\d]+)", RestHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, food = self.foods, ) ),
 			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" } ),

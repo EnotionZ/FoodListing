@@ -1,6 +1,9 @@
 body {
   background-color: #ccc;
 }
+.page-header h3 {
+  margin-top: 8px;
+}
 #content {
   margin-top: 62px;
 }
