@@ -27,8 +27,6 @@ class LoginHandler( tornado.web.RequestHandler ):
 			self.redirect( u"/login" + error_msg )
 
 	def set_current_user( self, user ):
-		if user:
-			self.set_secure_cookie( "lasttime", str( datetime.now() ) )
-			self.set_secure_cookie( "user", tornado.escape.json_encode( user ) )
-		else:
-			self.clear_cookie( "user" )
+		self.set_secure_cookie( "lasttime", str( datetime.now() ) )
+		self.set_secure_cookie( "user", tornado.escape.json_encode( user ) )
+		
