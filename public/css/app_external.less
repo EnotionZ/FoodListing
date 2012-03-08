@@ -2,12 +2,27 @@
 
 
 //============== HOMEPAGE ===============
-.bucket-image {
-	width: 300px;
-	height: 198px;
-	margin: 5px 0;
-	.box-shadow(inset 0 0 12px #000);
+.bucket {
+	.bucket-image {
+		width: 300px;
+		height: 198px;
+		margin: 12px 0;
+		.box-shadow(inset 0 0 12px #000);
+	}
+	.col1 .bucket-image { background: url("/static/images/bucket-s1.png"); }
+	.col2 .bucket-image { background: url("/static/images/bucket-s2.png"); }
+	.col3 .bucket-image { background: url("/static/images/bucket-s3.png"); }
+	p {
+		line-height: 24px;
+	}
 }
-.col1 .bucket-image { background: url("/static/images/bucket-s1.png"); }
-.col2 .bucket-image { background: url("/static/images/bucket-s2.png"); }
-.col3 .bucket-image { background: url("/static/images/bucket-s3.png"); }
+
+#learn_more {
+	background: #aaa;
+	padding: 5px 0 3px;
+	margin-top: 20px;
+
+	.span8 p {
+		font: normal 20px/22px arial narrow;
+	}
+}
