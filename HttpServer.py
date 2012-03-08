@@ -30,6 +30,8 @@ LEVELS = {
 			'error': logging.ERROR,
 			'critical': logging.CRITICAL
 		}
+		
+PORT = -1
 
 class HttpServer:
 	def __init__( self, configFile ):
@@ -74,19 +76,27 @@ class HttpServer:
 			( r"/logout", LogoutHandler ),
 			( r"/dashboard(/\w*)?", DashboardHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, ) ),
 			( r"/home(/?\w*)", PublicHandler ),
-			( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),
+			#( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),
 			( r"/rest/(\w+)/([\w\d]+)/([\w\d]+)", RestHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, food = self.foods, ) ),
-			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" } ),
+			#( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" } ),
 			( r"/sms", SMSHandler, dict( config = self.configFile, ) )
 			#( r"/shorten", ShortenHandler, dict( config = self.configFile ) )
 		], **settings )
 		http = tornado.httpserver.HTTPServer( application )
 		self.logger.debug( "Listening on: " + str( self.port ) )
-		http.listen( self.port )
+		
+		if PORT == -1:
+			http.listen( self.port )
+		else:
+			http.listen( PORT )
 		self.logger.info( "Starting server" )
 		tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
+	
+	if sys.argc == 2:
+		PORT = sys.argv[1]
+	
 	http = HttpServer( "config.json" )
 	
 	http.run()
