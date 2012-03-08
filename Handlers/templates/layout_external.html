@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>YourtablE - {{ page_title }}</title> 
+		<link href="static/bootstrap/css/bootstrap.css" rel="stylesheet"> 
+		<link href="static/css/app_external.css" rel="stylesheet"> 
+	</head>
+	<body> 
+		<div class="navbar navbar-fixed-top"> 
+			<div class="navbar-inner"> 
+				<div class="container"> 
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+					</a>
+					<a class="brand" href="/"><span>Y</span><span class="brand_tag">ourtab</span><span>le</span></a>
+					<div class="nav-collapse"> 
+						<ul class="nav"> 
+							<li>
+								<a href="/">
+									<i class="icon-home icon-white"></i>
+									Home
+								</a>
+							</li>
+							<li>
+								<a href="/about">
+									<i class="icon-info-sign icon-white"></i>
+									About Us
+								</a>
+							</li>
+							<li>
+								<a href="/team">
+									<i class="icon-user icon-white"></i>
+									The Team
+								</a>
+							</li>
+							<li>
+								<a href="/login">
+									<i class="icon-lock icon-white"></i>
+									Login
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div> 
+		</div> 
+		<div class="container">
+			<section id="content">
+				<div class="page-header">
+					<h1>{% block page_title %} {% end %}</h1>
+					<small>{% block page_subtitle %} {% end %}</small>
+				</div>
+				<div class="row">
+					<div class="span12">
+						{% block content %} Default {% end %}
+					</div>
+				</div>
+			</section>
+			<footer class="footer">
+				<p class="pull-right"><a href="#">Back to top</a></p>
+				<p>Copyright &copy; 2012 YourTable.com | <a>Terms of Service</a></p>
+			</footer>
+		</div>
+	</body>
+</html>

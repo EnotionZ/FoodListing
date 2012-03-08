@@ -71,6 +71,7 @@ class HttpServer:
 		[
 			( r"/", RedirectHandler ),
 			( r"/login", LoginHandler, dict( users = self.users, ) ),
+			( r"/logout", LogoutHandler ),
 			( r"/dashboard(/\w*)?", DashboardHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, ) ),
 			( r"/home(/?\w*)", PublicHandler ),
 			( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),

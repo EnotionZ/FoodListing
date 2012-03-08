@@ -1,0 +1,40 @@
+body {
+  background-color: #ccc;
+}
+#content {
+  margin-top: 62px;
+}
+.brand span.brand_tag {
+  color: #bbb;
+}
+.brand:hover span {
+  visibility: hidden;
+}
+.brand:hover span.brand_tag {
+  visibility: visible;
+}
+.navbar .nav {
+  float: right;
+}
+.footer {
+  border-top: 1px solid #E5E5E5;
+  padding: 35px 0 36px;
+  margin-top: 45px;
+}
+.bucket-image {
+  width: 300px;
+  height: 198px;
+  margin: 5px 0;
+  -moz-box-shadow: inset 0 0 12px #000000;
+  -webkit-box-shadow: inset 0 0 12px #000000;
+  box-shadow: inset 0 0 12px #000000;
+}
+.col1 .bucket-image {
+  background: url("/static/images/bucket-s1.png");
+}
+.col2 .bucket-image {
+  background: url("/static/images/bucket-s2.png");
+}
+.col3 .bucket-image {
+  background: url("/static/images/bucket-s3.png");
+}
