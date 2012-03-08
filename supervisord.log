@@ -1,0 +1,203 @@
+2012-03-08 20:32:25,323 CRIT Supervisor running as root (no user in config file)
+2012-03-08 20:32:58,469 CRIT Supervisor running as root (no user in config file)
+2012-03-08 20:33:51,361 CRIT Supervisor running as root (no user in config file)
+2012-03-08 20:35:53,848 CRIT Supervisor running as root (no user in config file)
+2012-03-08 20:38:04,479 CRIT Supervisor running as root (no user in config file)
+2012-03-08 20:38:11,539 CRIT Supervisor running as root (no user in config file)
+2012-03-08 20:38:56,470 CRIT Supervisor running as root (no user in config file)
+2012-03-08 21:03:22,521 CRIT Supervisor running as root (no user in config file)
+2012-03-08 21:03:22,917 INFO RPC interface 'supervisor' initialized
+2012-03-08 21:03:22,917 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-03-08 21:03:22,919 INFO daemonizing the supervisord process
+2012-03-08 21:03:22,920 INFO supervisord started with pid 24459
+2012-03-08 21:03:23,923 INFO spawned: 'mongod' with pid 24460
+2012-03-08 21:03:23,931 INFO spawned: 'mongod-repair' with pid 24461
+2012-03-08 21:03:23,936 INFO spawned: 'tornado-8080' with pid 24463
+2012-03-08 21:03:23,944 INFO spawned: 'tornado-8081' with pid 24465
+2012-03-08 21:03:24,045 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:24,175 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:24,176 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:25,176 INFO success: mongod entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:03:25,178 INFO spawned: 'mongod-repair' with pid 24494
+2012-03-08 21:03:25,181 INFO spawned: 'tornado-8080' with pid 24495
+2012-03-08 21:03:25,185 INFO spawned: 'tornado-8081' with pid 24496
+2012-03-08 21:03:25,297 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:25,406 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:25,407 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:27,409 INFO spawned: 'mongod-repair' with pid 24520
+2012-03-08 21:03:27,416 INFO spawned: 'tornado-8080' with pid 24521
+2012-03-08 21:03:27,428 INFO spawned: 'tornado-8081' with pid 24522
+2012-03-08 21:03:27,535 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:27,612 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:27,634 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:30,637 INFO spawned: 'mongod-repair' with pid 24545
+2012-03-08 21:03:30,645 INFO spawned: 'tornado-8080' with pid 24546
+2012-03-08 21:03:30,670 INFO spawned: 'tornado-8081' with pid 24547
+2012-03-08 21:03:30,767 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:30,831 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:03:30,850 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:30,851 INFO gave up: tornado-8080 entered FATAL state, too many start retries too quickly
+2012-03-08 21:03:30,874 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:31,875 INFO gave up: tornado-8081 entered FATAL state, too many start retries too quickly
+2012-03-08 21:03:35,010 INFO spawned: 'mongod-repair' with pid 24571
+2012-03-08 21:03:35,012 INFO spawned: 'tornado-8080' with pid 24572
+2012-03-08 21:03:35,051 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:35,220 INFO spawned: 'tornado-8081' with pid 25606
+2012-03-08 21:03:35,241 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:35,464 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:36,468 INFO spawned: 'mongod-repair' with pid 25620
+2012-03-08 21:03:36,471 INFO spawned: 'tornado-8080' with pid 25621
+2012-03-08 21:03:36,474 INFO spawned: 'tornado-8081' with pid 25622
+2012-03-08 21:03:36,580 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:36,696 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:36,704 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:38,706 INFO spawned: 'mongod-repair' with pid 25645
+2012-03-08 21:03:38,709 INFO spawned: 'tornado-8080' with pid 25646
+2012-03-08 21:03:38,716 INFO spawned: 'tornado-8081' with pid 25647
+2012-03-08 21:03:38,814 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:38,924 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:38,929 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:41,933 INFO spawned: 'mongod-repair' with pid 25670
+2012-03-08 21:03:41,942 INFO spawned: 'tornado-8080' with pid 25671
+2012-03-08 21:03:41,954 INFO spawned: 'tornado-8081' with pid 25673
+2012-03-08 21:03:42,045 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:03:42,133 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:03:42,153 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:03:42,154 INFO gave up: tornado-8080 entered FATAL state, too many start retries too quickly
+2012-03-08 21:03:42,155 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:03:43,156 INFO gave up: tornado-8081 entered FATAL state, too many start retries too quickly
+2012-03-08 21:07:49,176 INFO spawned: 'tornado-8080' with pid 25719
+2012-03-08 21:07:49,364 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:07:50,366 INFO spawned: 'tornado-8080' with pid 25729
+2012-03-08 21:07:50,555 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:07:52,559 INFO spawned: 'tornado-8080' with pid 25739
+2012-03-08 21:07:52,748 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:07:55,752 INFO spawned: 'tornado-8080' with pid 25749
+2012-03-08 21:07:55,949 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:07:56,949 INFO gave up: tornado-8080 entered FATAL state, too many start retries too quickly
+2012-03-08 21:09:15,615 INFO spawned: 'mongod-repair' with pid 25774
+2012-03-08 21:09:15,623 INFO spawned: 'tornado-8080' with pid 25775
+2012-03-08 21:09:15,660 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:09:15,794 INFO spawned: 'tornado-8081' with pid 25785
+2012-03-08 21:09:16,985 INFO spawned: 'mongod-repair' with pid 25799
+2012-03-08 21:09:16,986 INFO success: tornado-8080 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:09:16,986 INFO success: tornado-8081 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:09:17,027 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:09:19,035 INFO spawned: 'mongod-repair' with pid 25804
+2012-03-08 21:09:19,071 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:09:22,076 INFO spawned: 'mongod-repair' with pid 25809
+2012-03-08 21:09:22,111 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:09:23,112 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:09:56,358 INFO stopped: tornado-8080 (terminated by SIGTERM)
+2012-03-08 21:09:56,367 INFO stopped: mongod (exit status 12)
+2012-03-08 21:09:57,370 INFO stopped: tornado-8081 (terminated by SIGTERM)
+2012-03-08 21:10:22,563 INFO spawned: 'mongod' with pid 25821
+2012-03-08 21:10:22,571 INFO spawned: 'mongod-repair' with pid 25822
+2012-03-08 21:10:22,606 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:10:23,410 INFO spawned: 'tornado-8080' with pid 25833
+2012-03-08 21:10:23,578 INFO success: mongod entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:10:23,583 INFO spawned: 'tornado-8081' with pid 25841
+2012-03-08 21:10:23,756 INFO spawned: 'mongod-repair' with pid 25851
+2012-03-08 21:10:23,793 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:10:24,794 INFO success: tornado-8080 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:10:24,794 INFO success: tornado-8081 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:10:25,797 INFO spawned: 'mongod-repair' with pid 25860
+2012-03-08 21:10:25,830 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:10:28,834 INFO spawned: 'mongod-repair' with pid 25865
+2012-03-08 21:10:28,873 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:10:29,873 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:11:23,374 INFO stopped: tornado-8080 (terminated by SIGTERM)
+2012-03-08 21:11:23,383 INFO stopped: mongod (exit status 12)
+2012-03-08 21:11:24,386 INFO stopped: tornado-8081 (terminated by SIGTERM)
+2012-03-08 21:17:59,445 INFO spawned: 'mongod' with pid 26184
+2012-03-08 21:17:59,453 INFO spawned: 'mongod-repair' with pid 26185
+2012-03-08 21:17:59,493 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:18:00,437 INFO spawned: 'tornado-8080' with pid 26196
+2012-03-08 21:18:00,643 INFO success: mongod entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:18:00,651 INFO spawned: 'mongod-repair' with pid 26204
+2012-03-08 21:18:00,654 INFO spawned: 'tornado-8081' with pid 26205
+2012-03-08 21:18:00,690 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:18:01,847 INFO success: tornado-8080 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:18:01,848 INFO success: tornado-8081 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:18:02,852 INFO spawned: 'mongod-repair' with pid 26223
+2012-03-08 21:18:02,883 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:18:05,891 INFO spawned: 'mongod-repair' with pid 26228
+2012-03-08 21:18:05,928 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:18:06,929 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:19:47,872 INFO stopped: tornado-8080 (terminated by SIGTERM)
+2012-03-08 21:19:47,876 INFO stopped: mongod (exit status 12)
+2012-03-08 21:19:48,880 INFO stopped: tornado-8081 (terminated by SIGTERM)
+2012-03-08 21:22:04,405 INFO spawned: 'mongod' with pid 26297
+2012-03-08 21:22:04,410 INFO spawned: 'mongod-repair' with pid 26298
+2012-03-08 21:22:04,456 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:22:05,460 INFO success: mongod entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:22:05,462 INFO spawned: 'mongod-repair' with pid 26311
+2012-03-08 21:22:05,468 INFO spawned: 'tornado-8080' with pid 26312
+2012-03-08 21:22:05,511 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:22:05,639 INFO spawned: 'tornado-8081' with pid 26322
+2012-03-08 21:22:06,824 INFO success: tornado-8080 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:22:06,824 INFO success: tornado-8081 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:22:07,826 INFO spawned: 'mongod-repair' with pid 26336
+2012-03-08 21:22:07,869 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:22:10,875 INFO spawned: 'mongod-repair' with pid 26341
+2012-03-08 21:22:10,930 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:22:11,931 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:35:50,446 INFO stopped: tornado-8080 (terminated by SIGTERM)
+2012-03-08 21:35:50,450 INFO stopped: mongod (exit status 12)
+2012-03-08 21:35:51,454 INFO stopped: tornado-8081 (terminated by SIGTERM)
+2012-03-08 21:43:25,553 INFO spawned: 'mongod' with pid 26601
+2012-03-08 21:43:25,560 INFO spawned: 'mongod-repair' with pid 26602
+2012-03-08 21:43:25,601 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:43:26,603 INFO success: mongod entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-03-08 21:43:26,605 INFO spawned: 'mongod-repair' with pid 26615
+2012-03-08 21:43:26,613 INFO spawned: 'tornado-8080' with pid 26616
+2012-03-08 21:43:26,648 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:43:26,754 INFO spawned: 'tornado-8081' with pid 27649
+2012-03-08 21:43:26,763 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:43:26,904 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:43:27,907 INFO spawned: 'tornado-8080' with pid 27654
+2012-03-08 21:43:27,910 INFO spawned: 'tornado-8081' with pid 27655
+2012-03-08 21:43:28,061 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:43:28,081 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:43:29,084 INFO spawned: 'mongod-repair' with pid 27664
+2012-03-08 21:43:29,123 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:43:30,128 INFO spawned: 'tornado-8080' with pid 27669
+2012-03-08 21:43:30,132 INFO spawned: 'tornado-8081' with pid 27670
+2012-03-08 21:43:30,276 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:43:30,315 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:43:32,318 INFO spawned: 'mongod-repair' with pid 27679
+2012-03-08 21:43:32,366 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:43:33,367 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:43:33,370 INFO spawned: 'tornado-8080' with pid 27684
+2012-03-08 21:43:33,375 INFO spawned: 'tornado-8081' with pid 27685
+2012-03-08 21:43:33,526 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:43:33,526 INFO gave up: tornado-8080 entered FATAL state, too many start retries too quickly
+2012-03-08 21:43:33,540 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:43:34,540 INFO gave up: tornado-8081 entered FATAL state, too many start retries too quickly
+2012-03-08 21:44:44,512 INFO spawned: 'mongod-repair' with pid 27702
+2012-03-08 21:44:44,524 INFO spawned: 'tornado-8080' with pid 27703
+2012-03-08 21:44:44,560 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:44:44,667 INFO spawned: 'tornado-8081' with pid 27712
+2012-03-08 21:44:44,674 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:44:44,812 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:44:45,814 INFO spawned: 'mongod-repair' with pid 27717
+2012-03-08 21:44:45,819 INFO spawned: 'tornado-8080' with pid 27718
+2012-03-08 21:44:45,827 INFO spawned: 'tornado-8081' with pid 27719
+2012-03-08 21:44:45,922 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:44:45,988 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:44:46,007 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:44:48,009 INFO spawned: 'mongod-repair' with pid 27732
+2012-03-08 21:44:48,021 INFO spawned: 'tornado-8080' with pid 27733
+2012-03-08 21:44:48,023 INFO spawned: 'tornado-8081' with pid 27735
+2012-03-08 21:44:48,122 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:44:48,177 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:44:48,202 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:44:51,204 INFO spawned: 'mongod-repair' with pid 27747
+2012-03-08 21:44:51,212 INFO spawned: 'tornado-8080' with pid 27748
+2012-03-08 21:44:51,224 INFO spawned: 'tornado-8081' with pid 27749
+2012-03-08 21:44:51,331 INFO exited: mongod-repair (exit status 100; not expected)
+2012-03-08 21:44:51,363 INFO gave up: mongod-repair entered FATAL state, too many start retries too quickly
+2012-03-08 21:44:51,377 INFO exited: tornado-8080 (exit status 1; not expected)
+2012-03-08 21:44:51,384 INFO gave up: tornado-8080 entered FATAL state, too many start retries too quickly
+2012-03-08 21:44:51,394 INFO exited: tornado-8081 (exit status 1; not expected)
+2012-03-08 21:44:52,395 INFO gave up: tornado-8081 entered FATAL state, too many start retries too quickly

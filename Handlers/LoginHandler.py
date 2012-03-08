@@ -21,14 +21,12 @@ class LoginHandler( tornado.web.RequestHandler ):
 
 		if auth != None:
 			self.set_current_user( username )
-			self.redirect( self.get_argument( "next", "/" ) )
+			self.redirect( self.get_arguement( "next", "/dashboard" ) )
 		else:
 			error_msg = "?next=" + self.get_argument( "next", "/" ) + "&error=" + tornado.escape.url_escape("Login Incorrect")
 			self.redirect( u"/login" + error_msg )
 
 	def set_current_user( self, user ):
-		if user:
-			self.set_secure_cookie( "lasttime", str( datetime.now() ) )
-			self.set_secure_cookie( "user", tornado.escape.json_encode( user ) )
-		else:
-			self.clear_cookie( "user" )
+		self.set_secure_cookie( "lasttime", str( datetime.now() ) )
+		self.set_secure_cookie( "user", tornado.escape.json_encode( user ) )
+		

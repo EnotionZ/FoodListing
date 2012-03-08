@@ -77,13 +77,13 @@ class HttpServer:
 			( r"/static/(.*)", StaticFileHandler, { "path": "public/" }),
 			( r"/rest/(\w+)/([\w\d]+)/([\w\d]+)", RestHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, food = self.foods, ) ),
 			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" } ),
-			( r"/sms", SMSHandler, dict( config = self.configFile, sessions = self.sessions, foods = self.foods ) )
+			( r"/sms", SMSHandler, dict( config = self.configFile, ) )
 			#( r"/shorten", ShortenHandler, dict( config = self.configFile ) )
 		], **settings )
 		http = tornado.httpserver.HTTPServer( application )
 		self.logger.debug( "Listening on: " + str( self.port ) )
 		
-		http.listen( self.port )
+		http.listen( 8091 )
 		self.logger.info( "Starting server" )
 		tornado.ioloop.IOLoop.instance().start()
 
