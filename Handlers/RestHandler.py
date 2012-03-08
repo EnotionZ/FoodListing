@@ -46,12 +46,12 @@ class RestHandler( tornado.web.RequestHandler ):
 			
 	def handle_food( action, param ):
 		if action == "pull":
-			food = self.food.getById( "mGoPS" )
+			food = self.food.getById( "mGoPS" )	
 			return food
 		
 	def handle_restaurantFood( self, action, param ):
+		print param
 		if param == "menu":
 			return self.food.getFoodRestaurantMenu( "mGoPS" )
 		elif param == "bought":
-			return self.food.getFoodBoughtFromRestaurant( "mGoPS" )
-		return food
+			return self.sessions.getSessionsByRestaurant( "mGoPS" )

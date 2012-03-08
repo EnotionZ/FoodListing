@@ -85,11 +85,11 @@ class SessionStore:
 		
 	#This is based on the number of sessions at the restaurant not people
 	def getNumberOfVisitsRestaurant( self, id ):
-		return self.db.sessions.find( { "restaurant": id } ).count()
+		return self.db.sessions.find( { "restaurantId": id } ).count()
 	
 	#how much food was ordered here?
 	def getFoodCountsRestaurant( self, id ):
-		sessions = self.collection.find( { "restaunrant": id } )
+		sessions = self.collection.find( { "restaurantId": id } )
 		
 		food = {}
 		
@@ -104,6 +104,21 @@ class SessionStore:
 					food[a['name']]['food'] = a
 
 		return food
+		
+	def getSessionsByRestaurant( self, rid ):
+		sessions = self.collection.find( { "restaurantId": rid } )
+		
+		ret = []
+		
+		for s in sessions:
+			s['_id'] = str( s['_id'] )
+			s['stateDate'] = str( s['stateDate'] )
+			
+			for i in range( len( s['receipt'] ) ):
+				s['receipt'][i] = str( s['receipt'][i] )
+			ret.append( s )
+			
+		return ret
 	
 if __name__ == "__main__":
 	from UserStore import UserStore
