@@ -36,6 +36,8 @@ class UserStore:
 		self.db = self.con[self.database]
 		self.collection = self.db[self.collection]
 		
+		self.food = self.db['food']
+		
 		#self.collection.ensure_index( "id", unique=True )
 		
 	"""
@@ -72,6 +74,25 @@ class UserStore:
 	"""
 	def getByID( self, id ):
 		user = self.collection.find_one( { "uid": id } )
+		user['_id'] = str( user['_id'] )
+		
+		history = user['food_history']
+		
+		food = []
+		
+		for h in history:
+			h['date'] = str( h['date'] )
+			f = self.food.find_one( { "_id": h['fid'] } )
+			if not f == None:
+				try:
+					f['_id'] = str( f['_id'] )
+					f['date'] = str( f['date'] )
+					food.append( f )
+				except:
+					print f
+			
+		user['food_history'] = food
+		
 		return user
 		
 	"""

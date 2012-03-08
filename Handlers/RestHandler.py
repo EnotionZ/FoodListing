@@ -30,8 +30,8 @@ class RestHandler( tornado.web.RequestHandler ):
 		self.write( ret )
 		
 	def handle_users( self, action, param ):
-		if action == "pull":
-			user = self.users.getById( param )
+		if param == "get":
+			user = self.users.getByID( action )
 			return user
 			
 	def handle_sessions( action, param ):
