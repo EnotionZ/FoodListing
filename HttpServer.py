@@ -77,6 +77,7 @@ class HttpServer:
 			( r"/rest/(\w+)/([\w\d]+)/([\w\d]+)", RestHandler, dict( users = self.users, sessions = self.sessions, restaurants = self.restaurants, food = self.foods, ) ),
 			( r"/m/(.*)", StaticFileHandler, { "path": "mobile/" } ),
 			( r"/sms", SMSHandler, dict( config = self.configFile, ) )
+			#( r"/shorten", ShortenHandler, dict( config = self.configFile ) )
 		], **settings )
 		http = tornado.httpserver.HTTPServer( application )
 		self.logger.debug( "Listening on: " + str( self.port ) )

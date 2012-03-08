@@ -18,7 +18,7 @@ restaurant = RestaurantStore( "config.json" )
 foods = FoodStore( "config.json" )
 
 
-numSessions = randint( 10, 20 )
+numSessions = 100
 
 menu = restaurant.getMenu( "mGoPS" )
 
@@ -26,25 +26,32 @@ us = users.collection.find()
 ut = []
 for u in us:
 	ut.append( u['uid'] )
-	
-print numSessions
-	
 for sess in range( numSessions ):
 	us = random_integers( 1, len( ut ) - 1, randint( 1, 5 ) )
 	
 	id = sessions.addSession( str( randint( 1, 1000000000000000 ) ), "mGoPS" )
 	
+	sessions.setTaxRate( id, 0.06 )
+	sessions.setTip( id, 0.2 )
+	sessions.addPaymentType( id, "cc" )
+	
+	menu = foods.getFoodRestaurantMenu( "mGoPS" )
+	
+	total = 0.0
+	
 	for i in us:
 		sessions.addUser( id, ut[i] )
+		ii = menu[ randint( 0, len( menu ) - 1 ) ]
+		f = foods.getFoodById( ii['_id'] )
 		
-		fid = foods.addFood( ut[i], menu[randint( 0, len( menu )	 ) - 1], id, ( 0, 0 ) )
+		total += f['cost']
 		
-		sessions.addFood( id, fid )
+		sessions.addFood( id, f['_id'] )
 		
-		users.addFood( ut[i], fid )
+		users.addFood( ut[i], f['_id'] )
 		
-
-		
+	
+	sessions.setTotal( id, total )
 		
 		
 	

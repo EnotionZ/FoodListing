@@ -21,8 +21,7 @@ class SMSHandler( tornado.web.RequestHandler ):
 		
 		client = TwilioRestClient(self.account, self.token)
 
-		message = client.sms.messages.create(to=number, from_=self.fromNum,
-											 body=message)
+		message = client.sms.messages.create(to=number, from_=self.fromNum, body=message)
 											 
 		if message:
 			self.write( "OK" )

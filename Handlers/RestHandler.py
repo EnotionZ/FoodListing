@@ -18,17 +18,18 @@ class RestHandler( tornado.web.RequestHandler ):
 		ret = {}
 	
 		if collection == "users":
-			ret['data'] = handle_users( action, param )
+			ret['data'] = self.handle_users( action, param )
 		elif collection == "sessions":
-			ret['data'] = handle_sessions( action, param )
+			ret['data'] = self.handle_sessions( action, param )
 		elif collection == "restaurant":
-			ret['data'] = handle_restaurants( action, param )
+			ret['data'] = self.handle_restaurants( action, param )
 		elif collection == "food":
-			ret['data'] = handle_food( action, param )
-		
+			ret['data'] = self.handle_food( action, param )
+		elif collection == "foodlisting":
+			ret['data'] = self.handle_restaurantFood( action, param )
 		self.write( ret )
 		
-	def handle_users( action, param ):
+	def handle_users( self, action, param ):
 		if action == "pull":
 			user = self.users.getById( param )
 			return user
@@ -40,11 +41,17 @@ class RestHandler( tornado.web.RequestHandler ):
 
 	def handle_restaurants( action, param ):
 		if action == "pull":
-			restaurant = self.restaurants.getByID
+			restaurant = self.restaurants.getByID( param )
 			return restaurant
 			
 	def handle_food( action, param ):
 		if action == "pull":
-			food = self.food.getById( param )
+			food = self.food.getById( "mGoPS" )
 			return food
 		
+	def handle_restaurantFood( self, action, param ):
+		if param == "menu":
+			return self.food.getFoodRestaurantMenu( "mGoPS" )
+		elif param == "bought":
+			return self.food.getFoodBoughtFromRestaurant( "mGoPS" )
+		return food

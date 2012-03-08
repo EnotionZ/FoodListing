@@ -7,6 +7,8 @@
 from pymongo import Connection
 from Config import Config
 from datetime import datetime
+import json
+from bson import ObjectId
 class FoodStore:
 	def __init__( self, config ):
 		self.config = Config( config )
@@ -37,6 +39,10 @@ class FoodStore:
 		food['restaurant'] 	= restaurantId		#What restaurant? Can be None
 		
 		return self.collection.save( food )
+		
+	def getFoodById( self, id ):
+		id = ObjectId( id )
+		return self.collection.find_one( { "_id": id } )
 	
 	def getFoodByName( self, name ):
 		foods = self.collection.find( { "name": name } )
@@ -104,11 +110,38 @@ class FoodStore:
 		
 		ret = []
 		
+		dthandler = lambda obj: obj.isoformat() if isinstance(obj, datetime) else None
+		
 		for f in foods:
+			f['_id'] = str( f['_id'] )
+			f['date'] = str( f['date'] )
 			ret.append( f )
 			
 		return ret
 		
+	def getFoodRestaurantMenu( self, rid ):
+		foods = self.collection.find( { "restaurant": rid, "user": "" } )
+		
+		ret = []
+		
+		for f in foods:
+			f['_id'] = str( f['_id'] )
+			f['date'] = str( f['date'] )
+			ret.append( f )
+			
+		return ret
+		
+	def getFoodBoughtFromRestaurant( self, rid ):
+		foods = self.collection.find( { "restaurant": rid, "user": { "$ne":  "" } } )
+		
+		ret = []
+		
+		for f in foods:
+			f['_id'] = str( f['_id'] )
+			f['date'] = str( f['date'] )
+			ret.append( f )
+			
+		return ret
 if __name__ == "__main__":
 	f = FoodStore( "config.json" )
 	

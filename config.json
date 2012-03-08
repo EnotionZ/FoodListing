@@ -24,5 +24,10 @@
 		"token": "f534e790f21f96f11087a50df5fc92ea",
 		"fromNum": "+14155992671"
 	},
+	"bitly":
+	{
+		"apikey": "R_413842cabe7cf6e9a0a40432b2d507fb",
+		"user": "yourtable"
+	},
 	"logLevel": "debug"
 }

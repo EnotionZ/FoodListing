@@ -49,3 +49,12 @@ db.pools.save( p )
 var p = db.pools.findOne( {name:"triplemining.com"})
 p.shareStore.length
 p.shares
+use foodlisting
+db.sessions.find( { id: "mR73w" } )
+db.sessions.findOne()
+db.sessions.find( { id: "mR73W" } )
+db.sessions.find()
+db.restaurants.find()
+db.restaurants.find().forEach( printjson )
+db.food.find()
+db.food.find().forEach( printjson )
