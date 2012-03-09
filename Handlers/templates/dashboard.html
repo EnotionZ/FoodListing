@@ -1,15 +1,36 @@
 {% extends "layout_internal.html" %}
 
 {% block header %}
+	<script src="/static/js/jquery-1.7.1.min.js"></script> 
 	<script src="/static/js/raphael-min.js"></script> 
+	<script src="/static/js/g.raphael-min.js"></script> 
+	<script src="/static/js/g.bar-min.js"></script> 
 {% end %}
 {% block page_title %}
 	Dashboard
 {% end %}
 
 {% block content %}
-	<h2>How much have you spent on food over the past 7 days</h2>
+	<h2>Amount spent on food this week compared to last week</h2>
+	<div id="past7Days"></div>
 
-	<h2>Top restaurants you've eaten at in the past 30 days</h2>
+{% end %}
 
+{% block footer %}
+<script>
+	window.onload = function () {
+		var r = Raphael("past7Days"),
+		fin = function () {
+			this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+		},
+		fout = function () {
+			this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+		};
+
+		r.barchart(10, 10, 700, 340, [
+			[55.00, 20.12, 13.23, 32.35, 5.95, 19.95, 12.80],
+			[13, 23, 21, 16, 15, 19.95, 22.21]
+		]).hover(fin, fout);
+	};
+</script>
 {% end %}

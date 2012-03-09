@@ -21,7 +21,7 @@ class LoginHandler( tornado.web.RequestHandler ):
 
 		if auth != None:
 			self.set_current_user( username )
-			self.redirect( self.get_arguement( "next", "/dashboard" ) )
+			self.redirect( self.get_argument( "next", "/dashboard" ) )
 		else:
 			error_msg = "?next=" + self.get_argument( "next", "/" ) + "&error=" + tornado.escape.url_escape("Login Incorrect")
 			self.redirect( u"/login" + error_msg )
